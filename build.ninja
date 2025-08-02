@@ -18,6 +18,8 @@ build build/startup.o: cc startup_stm32l4xx.s
 
 # Custom Files
 build build/main.o: cc src/main.c
+build build/led.o: cc src/led.c
+build build/push_button.o: cc src/push_button.c
 build build/syscalls.o: cc src/syscalls.c
 build build/crt_stub.o: cc src/crt_stub.c
 
