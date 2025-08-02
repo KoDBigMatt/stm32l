@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stddef.h>
 
+#include "gpio.h"
 #include "led.h"
 #include "push_button.h"
 
