@@ -1,5 +1,5 @@
 rule cc
-  command = arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -DSTM32L476xx -Istm32l4xx/Drivers/CMSIS/Include -Istm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Include -c $in -o $out
+  command = arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -DSTM32L476xx -Istm32l4xx/Drivers/CMSIS/Include -Istm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Include -Istm32l4xx/Drivers/STM32L4xx_HAL_Driver/Inc -Istm32l4xx/Core/Inc -c $in -o $out
   description = Compiling $in
 
 
@@ -7,11 +7,20 @@ rule link
   command = arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -T linker_script.ld -Wl,--gc-sections --specs=nosys.specs $in -o $out
   description = Linking $out
 
-build build/main.o: cc main.c
-build build/startup.o: cc startup_stm32l4xx.s
+
+# STM32L Driver Files
 build build/system.o: cc stm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c
+build build/stm32l4xx_hal_gpio.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c
+build build/stm32l4xx_ll_gpio.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_gpio.c
+
+# STM32L Configuration Files
+build build/startup.o: cc startup_stm32l4xx.s
+
+# Custom Files
+build build/main.o: cc main.c
 build build/syscalls.o: cc syscalls.c
 build build/crt_stub.o: cc crt_stub.c
 
-build build/main.elf: link build/main.o build/startup.o build/system.o build/crt_stub.o build/syscalls.o
+
+build build/main.elf: link build/main.o build/startup.o build/system.o build/crt_stub.o build/syscalls.o build/stm32l4xx_hal_gpio.o build/stm32l4xx_ll_gpio.o
 default build/main.elf
