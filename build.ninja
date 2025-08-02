@@ -7,11 +7,11 @@ rule link
   command = arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -T linker_script.ld -Wl,--gc-sections --specs=nosys.specs $in -o $out
   description = Linking $out
 
-build main.o: cc main.c
-build startup.o: cc startup_stm32l4xx.s
-build system.o: cc stm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c
-build syscalls.o: cc syscalls.c
-build crt_stub.o: cc crt_stub.c
+build build/main.o: cc main.c
+build build/startup.o: cc startup_stm32l4xx.s
+build build/system.o: cc stm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c
+build build/syscalls.o: cc syscalls.c
+build build/crt_stub.o: cc crt_stub.c
 
-build build/main.elf: link main.o startup.o system.o crt_stub.o syscalls.o
+build build/main.elf: link build/main.o build/startup.o build/system.o build/crt_stub.o build/syscalls.o
 default build/main.elf
