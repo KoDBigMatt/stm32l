@@ -3,8 +3,10 @@
 
 int main(void) {
     
-    setvbuf(stdout, NULL, _IONBF, 0);
-    printf("Hello from STM32!\n");
+    #if 0
+        setvbuf(stdout, NULL, _IONBF, 0);
+        printf("Hello from STM32!\n");
+    #endif
 
     while (1) {
         // Toggle a pin or just loop
