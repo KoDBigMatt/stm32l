@@ -17,6 +17,16 @@ int main(void) {
     }
 }
 
+
+/* 
+ * Initalize the system
+ */
+void MAIN_vInit(void) {
+    GPIO_vInit();
+    LED_vInit();
+    PUSH_vInit();
+}
+
 // void SystemInit(void) {
 //     // Clock setup would go here
 // }

@@ -11,3 +11,11 @@
 // Include all other customer headers
 
 
+
+/*
+ * Initalize this module
+ */
+void PUSH_vInit(void) {
+
+} // PUSH_vInit
+

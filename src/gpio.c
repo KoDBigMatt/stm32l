@@ -13,3 +13,10 @@
 // Include all other customer headers
 
 
+
+/*
+ * Initalize this module
+ */
+void GPIO_vInit(void) {
+
+} // GPIO_vInit

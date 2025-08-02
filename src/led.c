@@ -11,3 +11,11 @@
 // Include all other customer headers
 
 
+
+/*
+ * Initalize this module
+ */
+void LED_vInit(void) {
+
+} // LED_vInit
+
