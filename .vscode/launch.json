@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug STM32L (OpenOCD)",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "openocd",
+      "cwd": "${workspaceFolder}",
+      "executable": "build/main.elf",
+      "runToEntryPoint": "main",
+      "device": "STM32L476RG",
+      "interface": "swd",
+      "preLaunchTask": "NinjaBuld",
+
+      // 🔧 These are the OpenOCD config files
+      "configFiles": [
+        "interface/stlink.cfg",
+        "target/stm32l4x.cfg"
+      ],
+
+      "semiHostingEnabled": true,
+      "semiHostingArgs": [],
+      "semiHostingCmdLine": "",
+
+      // Optional: Use a specific path to openocd.exe
+      // "serverpath": "C:/msys64/mingw64/bin/openocd.exe",
+
+      "svdFile": "${workspaceFolder}/stm32l4xx.svd"
+    }
+  ]
+}
