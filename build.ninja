@@ -10,6 +10,11 @@ rule link
 
 # STM32L Driver Files
 build build/system.o: cc stm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Source/Templates/system_stm32l4xx.c
+build build/stm32l4xx_hal.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
+build build/stm32l4xx_hal_cortex.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
+build build/stm32l4xx_hal_rcc.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c
+build build/stm32l4xx_hal_pwr.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c
+build build/stm32l4xx_hal_pwr_ex.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c
 build build/stm32l4xx_hal_gpio.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c
 build build/stm32l4xx_ll_gpio.o: cc stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_gpio.c
 
@@ -25,5 +30,5 @@ build build/syscalls.o: cc src/syscalls.c
 build build/crt_stub.o: cc src/crt_stub.c
 
 
-build build/main.elf: link build/main.o build/startup.o build/system.o build/crt_stub.o build/syscalls.o build/stm32l4xx_hal_gpio.o build/stm32l4xx_ll_gpio.o build/gpio.o build/led.o build/push_button.o
+build build/main.elf: link build/main.o build/startup.o build/system.o build/crt_stub.o build/syscalls.o build/stm32l4xx_hal_gpio.o build/stm32l4xx_ll_gpio.o build/stm32l4xx_hal_pwr_ex.o build/stm32l4xx_hal_pwr.o build/stm32l4xx_hal_cortex.o build/stm32l4xx_hal.o build/stm32l4xx_hal_rcc.o build/gpio.o build/led.o build/push_button.o
 default build/main.elf
