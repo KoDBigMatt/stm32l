@@ -22,11 +22,19 @@ set(linker_script_SRC ${linker_script_SRC}
 
 # Sources
 set(sources_SRCS ${sources_SRCS}
-    
+    # STM32 Source
+	${CMAKE_CURRENT_SOURCE_DIR}/stm32l4xx/Core/Src/system_stm32l4xx.c
+	
+	${CMAKE_CURRENT_SOURCE_DIR}/stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
+	${CMAKE_CURRENT_SOURCE_DIR}/stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
+
+	# Custom Source
 	${CMAKE_CURRENT_SOURCE_DIR}/Src/main.c
 	${CMAKE_CURRENT_SOURCE_DIR}/Src/syscall.c
 	${CMAKE_CURRENT_SOURCE_DIR}/Src/sysmem.c
 	${CMAKE_CURRENT_SOURCE_DIR}/Startup/startup_stm32l476rgtx.s
+
+	\\
 )
 
 # Include directories

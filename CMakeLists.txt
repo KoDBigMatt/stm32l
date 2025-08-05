@@ -34,7 +34,15 @@ set(cpu_PARAMS
 set(sources_SRCS)
 
 # Include directories for all compilers
-set(include_DIRS)
+set(include_DIRS
+    "stm32l4xx/Core/Inc"
+    "stm32l4xx/Core/Inc"
+    "stm32l4xx/Drivers/CMSIS/Include"
+    "stm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Include"
+    "stm32l4xx/Drivers/CMSIS/Device/ST/STM32L4xx/Source"
+    "stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Inc"
+    "stm32l4xx/Drivers/STM32L4xx_HAL_Driver/Src"
+)
 
 # Include directories for each compiler
 set(include_c_DIRS)
@@ -42,7 +50,9 @@ set(include_cxx_DIRS)
 set(include_asm_DIRS)
 
 # Symbols definition for all compilers
-set(symbols_SYMB)
+set(symbols_SYMB
+    "STM32L476xx"    
+)
 
 # Symbols definition for each compiler
 set(symbols_c_SYMB)

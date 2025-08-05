@@ -3,7 +3,7 @@
 #include <stddef.h>
 
 // Include STM32L driver libraries
-// #include "stm32l4xx_hal.h"
+#include "stm32l4xx_hal.h"
 
 // Include all other customer headers
 // #include "gpio.h"
@@ -21,7 +21,7 @@ int main(void) {
         printf("Hello from STM32!\n");
     #endif
 
-    // HAL_StatusTypeDef status = HAL_Init();
+    HAL_Init();
     SystemClock_Config();
 
     MAIN_vInit();
